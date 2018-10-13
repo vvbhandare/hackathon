@@ -1,0 +1,51 @@
+create database `burger_chain`;
+
+CREATE TABLE `users` (
+`uid` int(11) AUTO_INCREMENT,
+`username` varchar(50),
+`password` varchar(200),
+`email` varchar(200),
+`name` varchar(200),
+PRIMARY KEY (`uid`)
+);
+
+CREATE TABLE `feedback` (
+`fid` int(11) AUTO_INCREMENT,
+`uid_fk` int(11),
+`oid_fk` int(11),
+`pid_fk` int(11),
+`frating` int(11),
+`fdescr` text,
+PRIMARY KEY (`fid`)
+);
+
+CREATE TABLE `product` (
+`pid` int(11) AUTO_INCREMENT,
+`pname` varchar(50),
+`pdescr` text,
+`pprice` DOUBLE(10,2),
+PRIMARY KEY (`pid`)
+);
+
+CREATE TABLE `currency` (
+`cuid` int(11) AUTO_INCREMENT,
+`uid_fk` int(11),
+`pid_fk` int(11),
+`earned_curr` DOUBLE(10,2),
+PRIMARY KEY (`cuid`)
+);
+
+CREATE TABLE `cart` (
+`cid` int(11) AUTO_INCREMENT,
+`uid_fk` int(11),
+`pid_fk` int(11),
+`total_price` DOUBLE(10,2),
+PRIMARY KEY (`cid`)
+);
+
+CREATE TABLE `orders` (
+`oid` int(11) AUTO_INCREMENT,
+`uid_fk` int(11),
+`pid_fk` int(11),
+PRIMARY KEY (`oid`)
+);
