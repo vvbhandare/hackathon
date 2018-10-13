@@ -1,12 +1,15 @@
 var connection = require('./../config');
-module.exports.getOrders=function(req,res){
+module.exports.submitProductFeedback=function(req,res){
     var uid=req.body.uid;
-    connection.query('SELECT * FROM orders WHERE uid_fk = ?',[uid], function (error, results, fields) {
+	var pid=req.body.pid;
+	var frating=req.body.rating;
+	var fdescr=req.body.descr;
+    connection.query('SELECT * FROM feedback WHERE is_feedback_submitted = false AND uid_fk = ?',[uid], function (error, results, fields) {
       if (error) {
-		  res.json({
-			  status:false,
-			  message:'There are some error with query..'
-		  })
+          res.json({
+            status:false,
+            message:'There are some error with query..'
+            })
       } else {
         if(results.length > 0) {
 			res.json({

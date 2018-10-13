@@ -14,6 +14,7 @@ CREATE TABLE `feedback` (
 `uid_fk` int(11),
 `oid_fk` int(11),
 `pid_fk` int(11),
+`is_feedback_submitted` boolean,
 `frating` int(11),
 `fdescr` text,
 PRIMARY KEY (`fid`)
