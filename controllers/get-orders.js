@@ -1,7 +1,7 @@
 var connection = require('./../config');
 module.exports.getOrders=function(req,res){
     var uid=req.body.uid;
-    connection.query('SELECT * FROM orders WHERE uid_fk = ?',[uid], function (error, results, fields) {
+    connection.query('SELECT * FROM orders o, feedback f WHERE o.oid = f.oid_fk AND o.pid_fk = f.pid_fk AND o.uid_fk = ?',[uid], function (error, results, fields) {
       if (error) {
 		  res.json({
 			  status:false,
